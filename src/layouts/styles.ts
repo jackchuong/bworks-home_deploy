@@ -1,0 +1,103 @@
+/* eslint-disable jsx-a11y/no-autofocus */
+import { makeStyles } from '@material-ui/core/styles';
+
+const styles = makeStyles((theme) => ({
+  loginRoot: {
+    height: '100vh',
+    width: '100%',
+    // marginTop: theme.spacing(8),
+  },
+  loginImage: {
+    backgroundImage: 'url(/submit.jpg)',
+    backgroundRepeat: 'no-repeat',
+    backgroundSize: 'cover',
+    width: '100%',
+    height: '100vh',
+    display: 'flex',
+    flexWrap: 'wrap',
+    flexDirection: 'column',
+    boxSizing: 'border-box',
+    justifyContent: 'space-between',
+    paddingTop: '0%',
+    paddingBottom: '5%',
+  },
+  loginPaper: {
+    margin: theme.spacing(2, 2),
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+  },
+  loginAvatar: {
+    margin: theme.spacing(1),
+    backgroundColor: theme.palette.secondary.main,
+  },
+  loginForm: {
+    width: '100%', // Fix IE 11 issue.
+    marginTop: theme.spacing(1),
+  },
+  loginSubmit: {
+    margin: theme.spacing(3, 0, 2),
+  },
+  product01Background: {
+    backgroundImage: 'url(/product01.jpg)',
+    backgroundRepeat: 'no-repeat',
+    backgroundSize: 'cover',
+    width: '100%',
+    height: '100%',
+    display: 'flex',
+    flexWrap: 'wrap',
+    flexDirection: 'column',
+    boxSizing: 'border-box',
+    justifyContent: 'space-between',
+    paddingTop: '10%',
+    paddingBottom: '5%',
+    textAlign: 'center',
+  },
+  product02Background: {
+    backgroundImage: 'url(/product02.jpg)',
+    backgroundRepeat: 'no-repeat',
+    backgroundSize: 'cover',
+    width: '100%',
+    height: '100%',
+    display: 'flex',
+    flexWrap: 'wrap',
+    flexDirection: 'column',
+    boxSizing: 'border-box',
+    justifyContent: 'space-between',
+    paddingTop: '10%',
+    paddingBottom: '5%',
+    textAlign: 'center',
+  },
+  product03Background: {
+    backgroundImage: 'url(/product03.jpg)',
+    backgroundRepeat: 'no-repeat',
+    backgroundSize: 'cover',
+    width: '100%',
+    height: '100%',
+    display: 'flex',
+    flexWrap: 'wrap',
+    flexDirection: 'column',
+    boxSizing: 'border-box',
+    justifyContent: 'space-between',
+    paddingTop: '10%',
+    paddingBottom: '5%',
+    textAlign: 'center',
+  },
+  product04Background: {
+    backgroundImage: 'url(/product03.jpg)',
+    backgroundRepeat: 'no-repeat',
+    backgroundSize: 'cover',
+    width: '100%',
+    height: '100%',
+    display: 'flex',
+    flexWrap: 'wrap',
+    flexDirection: 'column',
+    boxSizing: 'border-box',
+    justifyContent: 'space-between',
+    paddingTop: '10%',
+    paddingBottom: '5%',
+    textAlign: 'center',
+  }
+}));
+
+export default styles;

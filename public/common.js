@@ -1,0 +1,22 @@
+/* eslint-disable no-undef */
+module.exports = {
+  'site-name': 'My site',
+  copyright: 'Copyright © 2020 My site',
+  'change-locale': 'Change locale',
+  'error-without-status': 'Page not found',
+  home: 'Home',
+  logoName: 'mylogo',
+  login: 'Login',
+  product01: 'poductI',
+  product02: 'poductII',
+  product03: 'poductIII',
+  product04: 'poductIV',
+  product05: 'poductV',
+  product06: 'poductVI',
+  samplePages: 'samplePages',
+  'about-us': 'About us',
+  'contact-us': 'Contact us',
+  components: 'components',
+  submit: 'SUBMIT',
+  support: 'SUPPORT',
+};
