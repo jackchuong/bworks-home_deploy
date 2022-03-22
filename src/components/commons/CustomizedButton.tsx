@@ -4,11 +4,12 @@ import Link from './link';
 
 const large = {
   borderRadius: 15,
-  width: 250,
+  width: 200,
   backgroundColor: 'black',
   variant: 'outlined',
   color: 'red',
-  marginLeft: 10,
+  marginLeft: 5,
+  marginRight: 5,
 };
 
 const medium = {

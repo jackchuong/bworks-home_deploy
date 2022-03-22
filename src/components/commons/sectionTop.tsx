@@ -14,7 +14,7 @@ const useStyles = makeStyles({
   },
 
   '@keyframes myMove': {
-    '0%': { transform: 'translateY(10px)', opacity: 0 },
+    '0%': { transform: 'translateY(30px)', opacity: 0 },
 
     '100%': { transform: 'translateY(0)', opacity: 1 },
   },

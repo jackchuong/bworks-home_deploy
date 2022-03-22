@@ -14,13 +14,13 @@ const Component = (props): NextPage => {
 
         display: 'flex',
         flexWrap: 'wrap',
-        justifyContent: 'center',
+        justifyContent: 'space-around',
         alignItems: 'center',
         color: textColor,
-        textAlign: 'center',
+        textAlign: 'justify',
       }}
     >
-      <div style={{ width: '40%' }}>{content}</div>
+      <div style={{ width: '60%' }}>{content}</div>
     </div>
   );
 };
