@@ -1,12 +1,11 @@
 This is a Next.js based project to style react components into beautiful ones. Including animations, effects and layouts
 
 ## Getting Started
-Clone and run code: 
-- git clone https://github.com/saigonbitmaster/styledReact
-- yarn //install node depedenceis
-- yarn run dev //run development mode 
-- yarn run build //build the site
-- yarn run start //run production mode
+- git clone https://github.com/saigonbitmaster/bworkHomePage
+- yarn
+- yarn run dev 
+- yarn run build 
+- yarn run start
 
 Modify data, images in the folder
 src/pages_/api/data.js
