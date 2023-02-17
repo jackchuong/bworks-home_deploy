@@ -12,8 +12,10 @@ import styles from '@/layouts/styles';
 import axios from 'axios';
 
 export default function SignInSide(): NextPage {
+  const classes = styles();
+
   const onClick = () => {
-    const url = `${process.env.NEXT_PUBLIC_API_URL}/signup`;
+    const url = `${process.env.NEXT_PUBLIC_API_URL}/promotion`;
     axios({
       url: url,
       method: 'POST',
@@ -23,21 +25,15 @@ export default function SignInSide(): NextPage {
       .catch((error) => setWarning('Submit failed'));
   };
 
-  const [data, setData] = React.useState({ email: '', walletAddress: '', username: '' });
+  const [data, setData] = React.useState({ email: '', walletAddress: '' });
   const [warning, setWarning] = React.useState(null);
 
-  const onChangeEmail = (event) => {
+  const onChangeMail = (event) => {
     setData({ ...data, email: event.target.value });
   };
   const onChangeWalletAddress = (event) => {
     setData({ ...data, walletAddress: event.target.value });
   };
-
-  const onChangeUsername = (event) => {
-    setData({ ...data, username: event.target.value });
-  };
-
-  const classes = styles();
 
   return (
     <MainLayout footer={true} bar={false}>
@@ -52,27 +48,14 @@ export default function SignInSide(): NextPage {
               </Grid>
               <Grid item>
                 <Typography component="h1" variant="h5" style={{ marginTop: 10, marginLeft: 10 }}>
-                  Submit an account
+                  Enter your wallet address to receive bWorks token
                 </Typography>
               </Grid>
             </Grid>
 
             <form className={classes.form} noValidate>
               <Grid container spacing={1}>
-                <Grid item xs={6} sm={6} md={6}>
-                  <TextField
-                    variant="outlined"
-                    margin="normal"
-                    required
-                    fullWidth
-                    id="Username"
-                    label="Username"
-                    name="Username"
-                    onChange={onChangeUsername}
-                    autoFocus
-                  />
-                </Grid>
-                <Grid item xs={6} sm={6} md={6}>
+                <Grid item xs={12} sm={12} md={12}>
                   <TextField
                     variant="outlined"
                     margin="normal"
@@ -82,7 +65,7 @@ export default function SignInSide(): NextPage {
                     label="Email Address"
                     name="email"
                     autoComplete="email"
-                    onChange={onChangeEmail}
+                    onChange={onChangeMail}
                   />
                 </Grid>
                 <Grid item xs={12} sm={12} md={12}>
@@ -105,13 +88,13 @@ export default function SignInSide(): NextPage {
                 <Grid item xs={12} sm={12} md={12}>
                   <Button
                     type="submit"
+                    onClick={onClick}
                     fullWidth
                     variant="contained"
                     color="primary"
                     className={classes.loginSubmit}
-                    onClick={onClick}
                   >
-                    Send request
+                    Submit
                   </Button>
                   {warning && (
                     <Typography component="h1" variant="h5" style={{ marginTop: 10, marginLeft: 10, color: 'red' }}>
