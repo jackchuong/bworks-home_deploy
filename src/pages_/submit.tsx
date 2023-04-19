@@ -10,21 +10,42 @@ import { NextPage } from 'next';
 import MainLayout from '@/layouts/mainLayout';
 import styles from '@/layouts/styles';
 import axios from 'axios';
+import { validateEmail } from '../utils/common';
 
 export default function SignInSide(): NextPage {
-  const onClick = () => {
-    const url = `${process.env.NEXT_PUBLIC_API_URL}/signup`;
+  const onClick = (e) => {
+    e.preventDefault();
+    if (!validateEmail(data.email)) {
+      setWarning('Not a valid email address');
+      return;
+    }
+    if (data.password !== repeatPassword) {
+      setWarning('password is not matched');
+      return;
+    }
+    const url = process.env.NEXT_PUBLIC_SUMMIT_ACCOUNT;
     axios({
       url: url,
       method: 'POST',
       data: data,
     })
-      .then((response) => setWarning('Submit succeed'))
-      .catch((error) => setWarning('Submit failed'));
+      .then((response) => {
+        setWarning('Submit succeed, verification link is sent to your email please verify');
+        setData({ email: '', walletAddress: '', username: '', fullName: '', password: '' });
+        setRepeatPassword('');
+      })
+      .catch((error) => {
+        setWarning(`Submit failed: ${error.response.data.message}`);
+        setData({ email: '', walletAddress: '', username: '', fullName: '', password: '' });
+        setRepeatPassword('');
+        console.log(error);
+      });
   };
 
-  const [data, setData] = React.useState({ email: '', walletAddress: '', username: '' });
+  const [data, setData] = React.useState({ email: '', walletAddress: '', username: '', fullName: '', password: '' });
   const [warning, setWarning] = React.useState(null);
+
+  const [repeatPassword, setRepeatPassword] = React.useState('');
 
   const onChangeEmail = (event) => {
     setData({ ...data, email: event.target.value });
@@ -35,6 +56,18 @@ export default function SignInSide(): NextPage {
 
   const onChangeUsername = (event) => {
     setData({ ...data, username: event.target.value });
+  };
+
+  const onChangeFullName = (event) => {
+    setData({ ...data, fullName: event.target.value });
+  };
+
+  const onChangePassword = (event) => {
+    setData({ ...data, password: event.target.value });
+  };
+
+  const onChangeRepeatPassword = (event) => {
+    setRepeatPassword(event.target.value);
   };
 
   const classes = styles();
@@ -69,6 +102,7 @@ export default function SignInSide(): NextPage {
                     label="Username"
                     name="Username"
                     onChange={onChangeUsername}
+                    value={data.username}
                     autoFocus
                   />
                 </Grid>
@@ -83,6 +117,54 @@ export default function SignInSide(): NextPage {
                     name="email"
                     autoComplete="email"
                     onChange={onChangeEmail}
+                    value={data.email}
+                  />
+                </Grid>
+                <Grid item xs={6} sm={6} md={6}>
+                  <TextField
+                    variant="outlined"
+                    margin="normal"
+                    required
+                    fullWidth
+                    type="password"
+                    id="password"
+                    label="Password"
+                    name="Password"
+                    onChange={onChangePassword}
+                    value={data.password}
+                    autoFocus
+                  />
+                </Grid>
+                <Grid item xs={6} sm={6} md={6}>
+                  <TextField
+                    variant="outlined"
+                    margin="normal"
+                    type="password"
+                    required
+                    fullWidth
+                    id="repeatPassword"
+                    label="Repeat password"
+                    name="repeatPassword"
+                    autoComplete="repeatPassword"
+                    onChange={onChangeRepeatPassword}
+                    value={repeatPassword}
+                  />
+                </Grid>
+                <Grid item xs={12} sm={12} md={12}>
+                  <TextField
+                    variant="outlined"
+                    margin="normal"
+                    required
+                    fullWidth
+                    name="fullName"
+                    label="Full name"
+                    multiline={true}
+                    id="fullName"
+                    minRows={5}
+                    maxRows={10}
+                    size="medium"
+                    onChange={onChangeFullName}
+                    value={data.fullName}
                   />
                 </Grid>
                 <Grid item xs={12} sm={12} md={12}>
@@ -99,6 +181,7 @@ export default function SignInSide(): NextPage {
                     maxRows={10}
                     size="medium"
                     onChange={onChangeWalletAddress}
+                    value={data.walletAddress}
                   />
                 </Grid>
 

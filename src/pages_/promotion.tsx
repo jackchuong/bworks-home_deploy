@@ -10,29 +10,35 @@ import { NextPage } from 'next';
 import MainLayout from '@/layouts/mainLayout';
 import styles from '@/layouts/styles';
 import axios from 'axios';
-
+import { validateEmail } from '../utils/common';
 export default function SignInSide(): NextPage {
   const classes = styles();
 
-  const onClick = () => {
-    const url = `${process.env.NEXT_PUBLIC_API_URL}/promotion`;
+  const onClick = (e) => {
+    e.preventDefault();
+    if (!validateEmail(data.email)) {
+      setWarning('Not a valid email address');
+      return;
+    }
+
+    const url = process.env.NEXT_PUBLIC_RECEIVE_TOKEN_API;
     axios({
       url: url,
       method: 'POST',
       data: data,
     })
       .then((response) => setWarning('Submit succeed'))
-      .catch((error) => setWarning('Submit failed'));
+      .catch((error) => setWarning(`Submit failed: ${error.response.data.message}`));
   };
 
-  const [data, setData] = React.useState({ email: '', walletAddress: '' });
+  const [data, setData] = React.useState({ email: '', address: '' });
   const [warning, setWarning] = React.useState(null);
 
   const onChangeMail = (event) => {
     setData({ ...data, email: event.target.value });
   };
   const onChangeWalletAddress = (event) => {
-    setData({ ...data, walletAddress: event.target.value });
+    setData({ ...data, address: event.target.value });
   };
 
   return (

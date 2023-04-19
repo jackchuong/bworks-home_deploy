@@ -7,8 +7,8 @@ export const fullMenu = [
 
   { url: '/login', name: 'common:login', priority: 2 },
   { url: '/submit', name: 'common:submit', priority: 3 },
-  { url: '/support', name: 'common:support', priority: 3 },
   { url: '/promotion', name: 'common:promotion', priority: 3 },
+  { url: '/support', name: 'common:support', priority: 3 },
 ];
 export const logoMenu = fullMenu.filter((item) => item.priority === 4);
 export const topCenterMenu = fullMenu.filter((item) => item.priority === 1);

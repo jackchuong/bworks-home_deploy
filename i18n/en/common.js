@@ -11,7 +11,7 @@ module.exports = {
   jobSeeker: 'JOB SEEKER',
   wallet: 'WALLET',
   smartContract: 'SMART CONTRACT',
-  promotion: 'PROMOTION',
+  promotion: 'RECEIVE TOKEN',
   'about-us': 'About us',
   'contact-us': 'Contact us',
   components: 'components',
