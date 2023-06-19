@@ -32,7 +32,7 @@ yarn-error.log*
 /public/static/locales
 /.locales
 /src/pages
-/i18n.json
+#/i18n.json
 #built pages
 /src/pages
 
