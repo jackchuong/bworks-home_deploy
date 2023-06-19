@@ -6,7 +6,7 @@
   "scripts": {
     "i18n": "node copy-i18n.js",
     "dev": "next-translate && node . --debug=9230",
-    "build": "cross-env NODE_ENV=production && next-translate && next build",
+    "build": "cross-env NODE_ENV=production && next-translate && next build && next export",
     "analyze": "cross-env ANALYZE=true next build",
     "analyze:server": "cross-env BUNDLE_ANALYZE=server next build",
     "analyze:browser": "cross-env BUNDLE_ANALYZE=browser next build",

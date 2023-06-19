@@ -14,3 +14,7 @@ public
 Open [http://localhost:8000](http://localhost:8000) with your browser to see the result.
 
 You can start editing the page by modifying `pages_/index.tsx`. The page auto-updates as you edit the file.
+
+## build docker image & run
+docker build -t bworkshomepage-1.0 ./
+docker run -d -p 3000:3000 bworkshomepage-1.0

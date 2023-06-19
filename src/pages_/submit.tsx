@@ -35,7 +35,7 @@ export default function SignInSide(): NextPage {
         setRepeatPassword('');
       })
       .catch((error) => {
-        setWarning(`Submit failed: ${error.response.data.message}`);
+        setWarning(`Submit failed: ${error.response?.data?.message}`);
         setData({ email: '', walletAddress: '', username: '', fullName: '', password: '' });
         setRepeatPassword('');
         console.log(error);
