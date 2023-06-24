@@ -43,7 +43,10 @@ export default function Footer({ show, ...props }: ObjKeyValue): ReactElement {
         <Link color="inherit" href="/contact" style={{ marginLeft: 20 }}>
           Contact
         </Link>
-        <Link color="inherit" href="/about" style={{ marginLeft: 20 }}>
+        <Link color="inherit" href="https://t.me/bworksContact" style={{ marginLeft: 20 }}>
+          Telegram
+        </Link>
+        <Link color="inherit" href="/about" style={{ marginLeft: 20 }} target="_blank">
           About
         </Link>
       </Typography>
