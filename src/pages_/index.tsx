@@ -11,15 +11,16 @@ import data from './api/data.ts';
 import ButtonGroup from '@/components/commons/buttonGroup';
 import TextContent from '../components/commons/sectionText';
 import styles from '@/layouts/styles';
+import About from '../components/commons/sectionAbout';
 
 const Components = (): NextPage => {
   const content = data.general;
   const { t } = useTranslation();
   const [bar, setBar] = useState<boolean>(true);
-  const [footer, setFooter] = useState<boolean>(false);
+  const [footer, setFooter] = useState<boolean>(true);
   const afterLoad = (link: unknown, index: number): void => {
     setBar(index === 1);
-    setFooter(index === 4);
+    setFooter(index === 2);
   };
 
   return (
@@ -49,13 +50,24 @@ const Components = (): NextPage => {
           >
             <HeaderSection color="white" />
             <ButtonGroup
-              leftButton={{ href: '/submit', name: 'EMPLOYER', backgroundColor: 'orange', color: 'white' }}
-              rightButton={{ href: '/submit', name: 'JOB SEEKER', backgroundColor: 'orange', color: 'white' }}
+              leftButton={{
+                href: 'https://bworks.app/emp',
+                name: 'EMPLOYER',
+                backgroundColor: 'orange',
+                color: 'white',
+              }}
+              rightButton={{
+                href: 'https://bworks.app/jsk',
+                name: 'JOB SEEKER',
+                backgroundColor: 'orange',
+                color: 'white',
+              }}
               showIconButton={true}
             />
           </div>
         </div>
 
+        {/* 
         <div className="section">
           <TextContent content={data.product01} />
         </div>
@@ -64,7 +76,7 @@ const Components = (): NextPage => {
         </div>
         <div className="section">
           <TextContent content={data.product03} />
-        </div>
+        </div> */}
       </PagePiling>
     </MainLayout>
   );

@@ -20,6 +20,7 @@ export default function PagePiling({ className, id, children, options: rawOption
   useEffect(() => {
     // eslint-disable-next-line
     const j = $;
+    console.log(j);
     j(document).ready(function () {
       const p = j(`#${id}`);
       if (p && p.pagepiling) {

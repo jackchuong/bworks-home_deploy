@@ -30,18 +30,16 @@ export default function Footer({ show, ...props }: ObjKeyValue): ReactElement {
         <Link color="inherit" href="/">
           {'© '} {new Date().getFullYear()} {props.name}
         </Link>
-        <Link color="inherit" href="/legal" style={{ marginLeft: 20 }}>
+        <Link color="inherit" href="/" style={{ marginLeft: 20 }}>
           Legal
         </Link>
-        <Link color="inherit" href="/careers" style={{ marginLeft: 20 }}>
+        <Link color="inherit" href="/" style={{ marginLeft: 20 }}>
           Careers
         </Link>
-        <Link color="inherit" href="/news" style={{ marginLeft: 20 }}>
+        <Link color="inherit" href="/" style={{ marginLeft: 20 }}>
           News
         </Link>
-        <Link color="inherit" href="/location" style={{ marginLeft: 20 }}>
-          Location
-        </Link>
+
         <Link color="inherit" href="/contact" style={{ marginLeft: 20 }}>
           Contact
         </Link>

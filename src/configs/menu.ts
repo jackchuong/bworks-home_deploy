@@ -1,11 +1,11 @@
 export const fullMenu = [
   { url: '/', name: 'common:logoName', priority: 4 },
-  { url: '/submit', name: 'common:employer', priority: 1 },
-  { url: '/submit', name: 'common:jobSeeker', priority: 1 },
-  { url: '/submit', name: 'common:wallet', priority: 1 },
-  { url: '/submit', name: 'common:smartContract', priority: 1 },
+  { url: 'https://bworks.app/emp#/', name: 'common:employer', priority: 1 },
+  { url: 'https://bworks.app/jsk#/', name: 'common:jobSeeker', priority: 1 },
+  { url: '/milestones', name: 'common:milestone', priority: 1 },
+  { url: '/submit', name: 'common:submit', priority: 1 },
 
-  { url: '/login', name: 'common:login', priority: 2 },
+  { url: 'https://bworks.app/emp#/', name: 'common:login', priority: 2 },
   { url: '/submit', name: 'common:submit', priority: 3 },
   { url: '/promotion', name: 'common:promotion', priority: 3 },
   { url: '/support', name: 'common:support', priority: 3 },

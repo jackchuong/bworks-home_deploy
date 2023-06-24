@@ -1,6 +1,7 @@
 import React from 'react';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
+import Link from '@mui/material/Link';
 
 const useStyles = makeStyles({
   root: {
@@ -35,10 +36,16 @@ export default function HeaderSection(props) {
   return (
     <div className={classes.root}>
       <Typography className={classes.animatedItem} style={{ color: props.color }} variant="h4">
-        A smart contract based HR platform built on Cardano
+        Cardano Catalyst F8 funded project
       </Typography>
       <Typography className={classes.animatedItem1} style={{ color: props.color }} variant="subtitle1">
-        Product-delivery & Money-back guarantee
+        We are curently complete the development stage and provide beta test to pilot users.
+      </Typography>
+      <Typography className={classes.animatedItem1} style={{ color: props.color }} variant="subtitle1" inline>
+        Find latest update at{' '}
+        <a href="/milestones" style={{ color: props.color }}>
+          project milestones
+        </a>
       </Typography>
     </div>
   );
