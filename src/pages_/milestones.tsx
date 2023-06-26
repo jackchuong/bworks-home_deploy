@@ -19,6 +19,7 @@ import CreateIcon from '@mui/icons-material/Create';
 import GroupAddIcon from '@mui/icons-material/GroupAdd';
 import DoneIcon from '@mui/icons-material/Done';
 import SyncAltIcon from '@mui/icons-material/SyncAlt';
+import ChecklistRtlIcon from '@mui/icons-material/ChecklistRtl';
 
 export default function CustomizedTimeline() {
   return (
@@ -59,7 +60,7 @@ export default function CustomizedTimeline() {
             <Typography variant="h6" component="span">
               Design product
             </Typography>
-            <Typography>Design product structure & functions</Typography>
+            <Typography>Design system & product functions</Typography>
           </TimelineContent>
         </TimelineItem>
         <TimelineItem>
@@ -77,7 +78,7 @@ export default function CustomizedTimeline() {
             <Typography variant="h6" component="span">
               Offchain code
             </Typography>
-            <Typography>Develop backend APIs & Jobs</Typography>
+            <Typography>Develop backend APIs & backend services</Typography>
           </TimelineContent>
         </TimelineItem>
         <TimelineItem>
@@ -110,7 +111,7 @@ export default function CustomizedTimeline() {
             <Typography variant="h6" component="span">
               Onchain code
             </Typography>
-            <Typography>Develop plutus smart contracts</Typography>
+            <Typography>Develop bWorks plutus smart contracts</Typography>
           </TimelineContent>
         </TimelineItem>
         <TimelineItem>
@@ -141,16 +142,16 @@ export default function CustomizedTimeline() {
           </TimelineSeparator>
           <TimelineContent sx={{ py: '12px', px: 2 }}>
             <Typography variant="h6" component="span">
-              Launch beta
+              Launched beta version 1.0
             </Typography>
-            <Typography>Deploy beta version into AWS</Typography>
+            <Typography>Deployed beta version into AWS</Typography>
           </TimelineContent>
         </TimelineItem>
         <TimelineItem>
           <TimelineSeparator>
             <TimelineConnector sx={{ bgcolor: 'secondary.main' }} />
             <TimelineDot>
-              <DoneIcon />
+              <ChecklistRtlIcon />
             </TimelineDot>
             <TimelineConnector />
           </TimelineSeparator>
@@ -158,7 +159,7 @@ export default function CustomizedTimeline() {
             <Typography variant="h6" component="span">
               Product QA
             </Typography>
-            <Typography> Test functions & features and feedback</Typography>
+            <Typography> Testing functions, features and feedback</Typography>
           </TimelineContent>
         </TimelineItem>
       </Timeline>
