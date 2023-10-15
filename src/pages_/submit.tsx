@@ -10,7 +10,7 @@ import { NextPage } from 'next';
 import MainLayout from '@/layouts/mainLayout';
 import styles from '@/layouts/styles';
 import axios from 'axios';
-import { validateEmail } from '../utils/common';
+import { validateEmail, validatePassword } from '../utils/common';
 
 export default function SignInSide(): NextPage {
   const onClick = (e) => {
@@ -19,6 +19,11 @@ export default function SignInSide(): NextPage {
       setWarning('Not a valid email address');
       return;
     }
+    if (!validatePassword(data.password)) {
+      setWarning('password must be min 8 letters, with at least a symbol, upper and lower case letters and a number');
+      return;
+    }
+
     if (data.password !== repeatPassword) {
       setWarning('password is not matched');
       return;
