@@ -51,7 +51,7 @@ const Components = (): NextPage => {
             <HeaderSection color="white" />
             <ButtonGroup
               leftButton={{
-                href: 'https://bworks.app/emp',
+                href: 'https://bworks.app/emp#/postjobs',
                 name: 'EMPLOYER',
                 backgroundColor: 'orange',
                 color: 'white',

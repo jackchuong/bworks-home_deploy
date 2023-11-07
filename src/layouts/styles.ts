@@ -97,7 +97,7 @@ const styles = makeStyles((theme) => ({
     paddingTop: '10%',
     paddingBottom: '5%',
     textAlign: 'center',
-  }
+  },
 }));
 
 export default styles;
