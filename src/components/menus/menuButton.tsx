@@ -46,7 +46,7 @@ function MenuButton({ noTranslation, title, tReady, ...rest }: MenuButtonProps):
       onClick={onClick}
       href={rest.href}
       className={clsx(classes.button, rest.href === currentPath && classes.selected)}
-      style={{ color: 'white' }}
+      style={{ color: 'black' }}
       {...rest}
     >
       {noTranslation ? title : t(title)}

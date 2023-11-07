@@ -18,9 +18,8 @@ const DEFAULT_OPTIONS = {
 export default function PagePiling({ className, id, children, options: rawOptions = {} }: Props): ReactElement {
   const options = { ...DEFAULT_OPTIONS, ...rawOptions };
   useEffect(() => {
-    // eslint-disable-next-line
+    /*  // eslint-disable-next-line
     const j = $;
-    console.log(j);
     j(document).ready(function () {
       const p = j(`#${id}`);
       if (p && p.pagepiling) {
@@ -30,7 +29,7 @@ export default function PagePiling({ className, id, children, options: rawOption
     return () => {
       j(`#${id}`).remove();
       j('#pp-nav').remove();
-    };
+    }; */
   }, []);
   return (
     <div style={{ width: '100%', height: '100vh', overflow: 'hidden' }} id={id} className={className}>

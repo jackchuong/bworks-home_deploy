@@ -41,7 +41,12 @@ export function LargeButton(props: LargeButtonProps) {
   const color = props.color ? props.color : large.color;
   const href = props.href || '';
   return (
-    <Button style={{ ...large, backgroundColor: backgroundColor, color: color }} component={Link} href={href}>
+    <Button
+      style={{ ...large, backgroundColor: backgroundColor, color: color }}
+      component={Link}
+      href={href}
+      target="_blank"
+    >
       {props.name}{' '}
     </Button>
   );

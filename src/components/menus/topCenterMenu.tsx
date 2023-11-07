@@ -30,7 +30,7 @@ export default function TopCenterMenu(props): ReactElement {
         ...style,
         '& > *': {
           margin: theme.spacing(1),
-          color: theme.palette.common.white,
+          color: 'black',
         },
       }}
     >

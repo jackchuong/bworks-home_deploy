@@ -1,41 +1,45 @@
 import { LargeButton } from '@/components/commons/customizedButton';
 import IconButtons from '@/components/commons/iconButtons';
 import { makeStyles } from '@material-ui/core/styles';
-
-const useStyles = makeStyles({
-  container: {
-    marginTop: '10vh',
-    display: 'flex',
-    flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  container1: {
-    display: 'flex',
-    flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  leftMove: {
-    animation: `$leftMove 1.5s`,
-  },
-  rightMove: {
-    animation: `$RightMove 1.5s`,
-  },
-  '@keyframes leftMove': {
-    '0%': { transform: 'translateX(-20px)' },
-    '100%': { transform: 'translateX(0)' },
-  },
-  '@keyframes RightMove': {
-    '0%': { transform: 'translateX(20px)' },
-    '100%': { transform: 'translateX(0)' },
-  },
-});
+import { useMediaQuery, Theme, useTheme } from '@mui/material';
 
 export default function ButtonGroup(props) {
+  const theme = useTheme();
+  const matches = useMediaQuery(theme.breakpoints.down('lg'));
+  const mt = matches ? 40 : 100;
+
+  const useStyles = makeStyles({
+    container: {
+      display: 'flex',
+      flexDirection: 'row',
+      justifyContent: 'center',
+      alignItems: 'center',
+      marginTop: mt,
+    },
+    container1: {
+      display: 'flex',
+      flexDirection: 'row',
+      justifyContent: 'center',
+      alignItems: 'center',
+    },
+    leftMove: {
+      animation: `$leftMove 1.5s`,
+    },
+    rightMove: {
+      animation: `$RightMove 1.5s`,
+    },
+    '@keyframes leftMove': {
+      '0%': { transform: 'translateX(-20px)' },
+      '100%': { transform: 'translateX(0)' },
+    },
+    '@keyframes RightMove': {
+      '0%': { transform: 'translateX(20px)' },
+      '100%': { transform: 'translateX(0)' },
+    },
+  });
+
   const classes = useStyles();
   const show = props.showIconButton;
-  const href = props.href || '';
   return (
     <div>
       <div className={classes.container}>

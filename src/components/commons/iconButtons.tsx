@@ -26,7 +26,7 @@ export default function IconButtons(props) {
   return (
     props.show === true && (
       <IconButton className={classes.animatedItem} component={Link} href={href}>
-        <ArrowBackIosIcon style={{ fontSize: 30, color: 'white', transform: 'rotate(-90deg)' }} />
+        <ArrowBackIosIcon style={{ fontSize: 30, color: 'black', transform: 'rotate(-90deg)' }} />
       </IconButton>
     )
   );
