@@ -5,6 +5,7 @@ import { PieChart, Pie, Cell } from 'recharts';
 import Typography from '@mui/material/Typography';
 import axios from 'axios';
 import { useMediaQuery, Theme } from '@mui/material';
+import Box from '@mui/material/Box';
 
 const PaymentChart = () => {
   //const isSmall = useMediaQuery((theme: Theme) => theme.breakpoints.down('lg'));
@@ -50,7 +51,23 @@ const PaymentChart = () => {
       value: data2.numberOfBids - data2.numberOfSelectedBids || 0,
     },
   ];
-  const COLORS = ['#0088FE', '#FF8042'];
+
+  const data3 = [
+    { name: 'Locked TXs', value: data2.numberOfCompletedJobs || 0 },
+    {
+      name: 'Unlocked TXs',
+      value: data2.numberOfPostedJobs - data2.numberOfCompletedJobs || 0,
+    },
+  ];
+  const data4 = [
+    { name: 'Locked amount($) ada', value: data2.numberOfSelectedBids || 0 },
+    {
+      name: 'Unlocked amount($) ada',
+      value: data2.numberOfBids - data2.numberOfSelectedBids || 0,
+    },
+  ];
+
+  const COLORS = ['#4caf50', '#03a9f4'];
   const COLORS1 = ['#00C49F', '#FFBB28'];
 
   const RADIAN = Math.PI / 180;
@@ -67,75 +84,131 @@ const PaymentChart = () => {
   };
   //if (isSmall) return null;
   return (
-    <Card style={{ border: 'none', boxShadow: 'none' }}>
-      <CardHeader
-        title="Job applications statistic"
-        titleTypographyProps={{ variant: 'subtitle1' }}
-        subheader={
-          <Typography variant="subtitle2" gutterBottom>
-            {`Posted jobs: ${data2.totalPostedJobs || 0},  Has application jobs: ${
-              data2.numberOfPostedJobs || 0
-            }, Submitted applications: ${data2.numberOfBids || 0}, Selected applications: ${
-              data2.numberOfSelectedBids || 0
-            }, Complete jobs: ${data2.numberOfCompletedJobs || 0}`}
+    <div
+      style={{
+        width: 1200,
+        height: 335,
+        display: 'flex',
+        flexDirection: 'row',
+        justifyContent: 'center',
+        alignItems: 'center',
+      }}
+    >
+      <ResponsiveContainer width="50%" height="100%">
+        <PieChart>
+          <Pie
+            data={data}
+            cx="50%"
+            cy="50%"
+            labelLine={false}
+            label={renderCustomizedLabel}
+            outerRadius={140}
+            fill="#8884d8"
+            dataKey="value"
+            stroke="none"
+            innerRadius={90}
+          >
+            {data.map((entry, index) => (
+              <Cell key={`cell-${index}`} fill={COLORS1[index % COLORS1.length]} />
+            ))}
+          </Pie>
+          <Pie
+            data={data1}
+            cx="50%"
+            cy="50%"
+            labelLine={false}
+            label={renderCustomizedLabel}
+            outerRadius={80}
+            fill="#8884d8"
+            dataKey="value"
+            stroke="none"
+          >
+            {data.map((entry, index) => (
+              <Cell key={`cell-${index}`} fill={COLORS[index % COLORS1.length]} />
+            ))}
+          </Pie>
+          <Tooltip />
+          <Legend />
+        </PieChart>
+      </ResponsiveContainer>
+      <Box sx={{ width: 300 }}>
+        <Typography variant="subtitle2" component="ol">
+          Matched jobs
+        </Typography>
+        <ul>
+          <Typography variant="caption" component="li">
+            500 posted jobs
           </Typography>
-        }
-      />
-      <CardContent
-        sx={{
-          '&:last-child': {
-            paddingBottom: 1,
-          },
-        }}
-      >
-        <div
-          style={{
-            width: 700,
-            height: 335,
-            display: 'flex',
-            flexDirection: 'row',
-          }}
-        >
-          <ResponsiveContainer width="100%" height="100%">
-            <PieChart sx={{ border: 'none' }}>
-              <Pie
-                data={data1}
-                cx="25%"
-                cy="50%"
-                labelLine={false}
-                label={renderCustomizedLabel}
-                outerRadius={120}
-                fill="#8884d8"
-                dataKey="value"
-              >
-                {data1.map((entry, index) => (
-                  <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
-                ))}
-              </Pie>
+          <Typography variant="caption" component="li">
+            300 completed jobs
+          </Typography>
 
-              <Pie
-                data={data}
-                cx="75%"
-                cy="50%"
-                labelLine={false}
-                label={renderCustomizedLabel}
-                outerRadius={120}
-                fill="#8884d8"
-                dataKey="value"
-                stroke="none"
-                sx={{ border: 'none' }}
-              >
-                {data.map((entry, index) => (
-                  <Cell key={`cell-${index}`} fill={COLORS1[index % COLORS1.length]} />
-                ))}
-              </Pie>
-              <Tooltip />
-              <Legend />
-            </PieChart>
-          </ResponsiveContainer>
-        </div>
-      </CardContent>
-    </Card>
+          <Typography variant="caption" component="li">
+            100 applications
+          </Typography>
+          <Typography variant="caption" component="li">
+            50 selected applications
+          </Typography>
+        </ul>
+      </Box>
+      <ResponsiveContainer width="50%" height="100%">
+        <PieChart>
+          <Pie
+            data={data4}
+            cx="50%"
+            cy="50%"
+            labelLine={false}
+            label={renderCustomizedLabel}
+            outerRadius={140}
+            fill="#8884d8"
+            dataKey="value"
+            stroke="none"
+            innerRadius={90}
+          >
+            {data.map((entry, index) => (
+              <Cell key={`cell-${index}`} fill={COLORS1[index % COLORS1.length]} />
+            ))}
+          </Pie>
+          <Pie
+            data={data3}
+            cx="50%"
+            cy="50%"
+            labelLine={false}
+            label={renderCustomizedLabel}
+            outerRadius={80}
+            fill="#8884d8"
+            dataKey="value"
+            stroke="none"
+          >
+            {data.map((entry, index) => (
+              <Cell key={`cell-${index}`} fill={COLORS[index % COLORS1.length]} />
+            ))}
+          </Pie>
+          <Tooltip />
+          <Legend />
+        </PieChart>
+      </ResponsiveContainer>
+      <Box sx={{ width: 300 }}>
+        <Typography variant="subtitle2" component="ol">
+          Payments
+        </Typography>
+        <ul>
+          <Typography variant="caption" component="li">
+            500 Locked TXs
+          </Typography>
+          <Typography variant="caption" component="li">
+            300 Unlocked TXs
+          </Typography>
+
+          <Typography variant="caption" component="li">
+            100 Locked amount($) ada
+          </Typography>
+          <Typography variant="caption" component="li">
+            50 Unlocked amount($) ada
+          </Typography>
+        </ul>
+      </Box>
+    </div>
   );
 };
 

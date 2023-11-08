@@ -1,7 +1,7 @@
 import React from 'react';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
-
+import Box from '@mui/material/Box';
 import { useMediaQuery, Theme, useTheme } from '@mui/material';
 
 export default function HeaderSection(props) {
@@ -18,22 +18,29 @@ export default function HeaderSection(props) {
 
     animatedItem: {
       animation: `$myMove 3s`,
-      fontSize: 40,
     },
 
     '@keyframes myMove': {
-      '0%': { transform: 'translateY(30px)', opacity: 0 },
-
+      '0%': { transform: 'translateY(20px)', opacity: 0 },
       '100%': { transform: 'translateY(0)', opacity: 1 },
     },
+
     animatedItem1: {
-      animation: `$myMove1 8s`,
+      animation: `$myMove1 5s`,
     },
 
     '@keyframes myMove1': {
-      '0%': { opacity: 0.1 },
+      '0%': { transform: 'translateX(0px)', opacity: 0 },
+      '100%': { transform: 'translateX(0)', opacity: 1 },
+    },
 
-      '100%': { opacity: 1 },
+    animatedItem2: {
+      animation: `$myMove2 5s `,
+    },
+
+    '@keyframes myMove2': {
+      '0%': { transform: 'translateX(0px) translateY(0px)', opacity: 0 },
+      '100%': { transform: 'translateX(0) translateY(0)', opacity: 1 },
     },
   });
 
@@ -41,11 +48,18 @@ export default function HeaderSection(props) {
 
   return (
     <div className={classes.root}>
+      <Typography
+        className={classes.animatedItem1}
+        style={{ color: '#03a9f4', fontSize: 12, alignSelf: 'flex-end' }}
+        variant="subtitle2"
+      >
+        Funded by Cardano Catalyst
+      </Typography>
       <Typography className={classes.animatedItem} style={{ color: props.color }} variant="h4">
         A smart contract based HR platform built on Cardano
       </Typography>
-      <Typography className={classes.animatedItem1} style={{ color: props.color }} variant="subtitle1">
-        Job done & payment guarantee
+      <Typography className={classes.animatedItem2} sx={{ color: '#4caf50' }} variant="subtitle2">
+        Match jobs & payment guarantee
       </Typography>
     </div>
   );

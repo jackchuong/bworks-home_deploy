@@ -9,6 +9,8 @@ module.exports = {
   login: 'Login',
   employer: 'EMPLOYER',
   jobSeeker: 'JOB SEEKER',
+  howItWorks: 'HOW IT WORKs',
+  submitAnAccount: 'CREATE AN ACCOUNT',
   milestone: 'MILESTONES',
   wallet: 'WALLET',
   smartContract: 'SMART CONTRACT',

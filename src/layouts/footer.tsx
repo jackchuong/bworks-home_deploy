@@ -34,19 +34,15 @@ export default function Footer({ show, ...props }: ObjKeyValue): ReactElement {
           Legal
         </Link>
         <Link color="inherit" href="/" style={{ marginLeft: 20 }}>
-          Careers
+          Privacy
         </Link>
         <Link color="inherit" href="/" style={{ marginLeft: 20 }}>
           News
         </Link>
-
         <Link color="inherit" href="/contact" style={{ marginLeft: 20 }}>
           Contact
         </Link>
-        <Link color="inherit" href="https://t.me/bworksContact" style={{ marginLeft: 20 }}>
-          Telegram
-        </Link>
-        <Link color="inherit" href="/about" style={{ marginLeft: 20 }} target="_blank">
+        <Link color="inherit" href="/contact" style={{ marginLeft: 20 }}>
           About
         </Link>
       </Typography>

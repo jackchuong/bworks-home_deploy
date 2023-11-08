@@ -2,6 +2,7 @@ import { LargeButton } from '@/components/commons/customizedButton';
 import IconButtons from '@/components/commons/iconButtons';
 import { makeStyles } from '@material-ui/core/styles';
 import { useMediaQuery, Theme, useTheme } from '@mui/material';
+import Typography from '@material-ui/core/Typography';
 
 export default function ButtonGroup(props) {
   const theme = useTheme();
