@@ -26,7 +26,7 @@ const Components = (): NextPage => {
           alignItems: 'center',
         }}
       >
-        <div dangerouslySetInnerHTML={{ __html: html }} />;
+        <div dangerouslySetInnerHTML={{ __html: html }} />
       </Box>
     </MainLayout>
   );

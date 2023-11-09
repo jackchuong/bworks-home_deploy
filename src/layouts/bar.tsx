@@ -11,6 +11,9 @@ import DrawerMenu from '@/components/menus/drawerMenu';
 import LanguageButton from './languageButton';
 import { ObjKeyValue } from '@/components/dtos/common.dto';
 import clsx from 'clsx';
+import { topCenterMenu, subMenu, topRightMenu } from '@/configs/menu';
+
+import { useMediaQuery } from '@material-ui/core';
 
 const useStyles = makeStyles(() => ({
   grow: {
@@ -36,6 +39,8 @@ export default function Bar({ show, ...props }: ObjKeyValue): ReactElement {
   const theme = useTheme();
   const [openDrawer, setOpenDrawer] = useState(false);
 
+  const matches = useMediaQuery(theme.breakpoints.down('md'));
+
   return (
     <div>
       <AppBar
@@ -56,18 +61,21 @@ export default function Bar({ show, ...props }: ObjKeyValue): ReactElement {
 
           <TopRightMenu show={show} />
 
-          <IconButton
-            className={{ root: clsx(classes.transition, !show && classes.hiddenToolbar) }}
-            edge="start"
-            onClick={() => setOpenDrawer(true)}
-            style={{
-              marginLeft: theme.spacing(1),
-            }}
-            color="inherit"
-            aria-label="menu"
-          >
-            <MenuIcon classes={{ root: clsx(classes.transition, !show && classes.hiddenToolbar) }} />
-          </IconButton>
+          {subMenu.length !== 0 ||
+            (matches && (
+              <IconButton
+                className={{ root: clsx(classes.transition, !show && classes.hiddenToolbar) }}
+                edge="start"
+                onClick={() => setOpenDrawer(true)}
+                style={{
+                  marginLeft: theme.spacing(1),
+                }}
+                color="inherit"
+                aria-label="menu"
+              >
+                <MenuIcon classes={{ root: clsx(classes.transition, !show && classes.hiddenToolbar) }} />
+              </IconButton>
+            ))}
         </Toolbar>
         <DrawerMenu open={openDrawer} onClose={() => setOpenDrawer(false)} />
       </AppBar>

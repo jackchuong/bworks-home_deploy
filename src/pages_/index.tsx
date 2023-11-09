@@ -6,13 +6,13 @@ import HeaderSection from '@/components/commons/sectionTop';
 import ButtonGroup from '@/components/commons/buttonGroup';
 import Box from '@mui/material/Box';
 import JobChart from '../components/data/pieChart';
-
+import Link from '../components/commons/link';
 import { useMediaQuery, Theme, useTheme } from '@mui/material';
 
 const Components = (): NextPage => {
   const theme = useTheme();
   const matches = useMediaQuery(theme.breakpoints.down('lg'));
-
+  const sContractTxs = process.env.NEXT_PUBLIC_CONTRACT_TXS;
   const { t } = useTranslation();
   return (
     <MainLayout footer={true} bar={true}>
@@ -29,24 +29,19 @@ const Components = (): NextPage => {
           display: 'flex',
           flexDirection: 'column',
           boxSizing: 'border-box',
-          justifyContent: 'center',
+          justifyContent: 'space-around',
+          alignItems: 'center',
+          pt: 10,
+          pb: 10,
         }}
       >
         <HeaderSection color="black" />
 
-        {!matches && (
-          <Box
-            sx={{
-              display: 'flex',
-              flexDirection: 'row',
-              justifyContent: 'center',
-              alignItems: 'center',
-            }}
-          >
-            <JobChart />
-          </Box>
-        )}
+        {!matches && <JobChart />}
 
+        <Link color="#4caf50" href={sContractTxs} target="_blank" rel="noopener">
+          View smart contract TXs
+        </Link>
         <ButtonGroup
           leftButton={{
             href: 'https://bworks.app/web/#/postjobs',

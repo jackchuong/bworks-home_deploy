@@ -1,9 +1,9 @@
 import React, { ReactElement } from 'react';
-
-import { makeStyles } from '@material-ui/core/styles';
 import { Typography, Container } from '@material-ui/core';
 import Link from '@/components/commons/link';
 import clsx from 'clsx';
+import { makeStyles, useTheme } from '@material-ui/core/styles';
+import { useMediaQuery } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -21,31 +21,37 @@ const useStyles = makeStyles((theme) => ({
   },
   hidden: { opacity: 0 },
 }));
+
 export default function Footer({ show, ...props }: ObjKeyValue): ReactElement {
   const classes = useStyles();
-
+  const theme = useTheme();
+  const matches = useMediaQuery(theme.breakpoints.up('md'));
   return (
-    <div className={clsx(classes.root, !show && classes.hidden)} {...props}>
-      <Typography variant="body2">
-        <Link color="inherit" href="/">
-          {'© '} {new Date().getFullYear()} {props.name}
-        </Link>
-        <Link color="inherit" href="/" style={{ marginLeft: 20 }}>
-          Legal
-        </Link>
-        <Link color="inherit" href="/" style={{ marginLeft: 20 }}>
-          Privacy
-        </Link>
-        <Link color="inherit" href="/" style={{ marginLeft: 20 }}>
-          News
-        </Link>
-        <Link color="inherit" href="/contact" style={{ marginLeft: 20 }}>
-          Contact
-        </Link>
-        <Link color="inherit" href="/contact" style={{ marginLeft: 20 }}>
-          About
-        </Link>
-      </Typography>
-    </div>
+    <>
+      {matches && (
+        <div className={clsx(classes.root, !show && classes.hidden)} {...props}>
+          <Typography variant="body2">
+            <Link color="inherit" href="/">
+              {'© '} {new Date().getFullYear()} {props.name}
+            </Link>
+            <Link color="inherit" href="/legal" style={{ marginLeft: 20 }}>
+              Legal
+            </Link>
+            <Link color="inherit" href="/privacy" style={{ marginLeft: 20 }}>
+              Privacy
+            </Link>
+            <Link color="inherit" href="/news" style={{ marginLeft: 20 }}>
+              News
+            </Link>
+            <Link color="inherit" href="/contact" style={{ marginLeft: 20 }}>
+              Contact
+            </Link>
+            <Link color="inherit" href="/about" style={{ marginLeft: 20 }}>
+              About
+            </Link>
+          </Typography>
+        </div>
+      )}
+    </>
   );
 }

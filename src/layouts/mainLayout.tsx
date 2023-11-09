@@ -6,7 +6,6 @@ import Footer from './footer';
 import RootContextProvider from '@/components/contexts/rootContext';
 import dynamic from 'next/dynamic';
 import LayoutTransition from './layoutTransition';
-import clsx from 'clsx';
 const Particles = dynamic(() => import('./particles'));
 
 interface MainLayoutProps {

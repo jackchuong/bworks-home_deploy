@@ -5,7 +5,7 @@ import useTranslation from 'next-translate/useTranslation';
 import Box from '@mui/material/Box';
 
 const Component = (): NextPage => {
-  const html = '<p>News</p>';
+  const html = '<p>bWorks token</p>';
   const { t } = useTranslation();
   return (
     <MainLayout footer={true} bar={true}>

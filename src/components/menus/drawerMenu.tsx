@@ -36,6 +36,7 @@ export default function DrawerMenu({ open, onClose }: Props): ReactElement {
     Router.pushI18n(item.url);
     onClose();
   };
+  if (subMenu.length === 0 && !matches) return null;
   return (
     <SwipeableDrawer anchor="right" open={open} onOpen={() => {}} onClose={onClose}>
       <List className={classes.list}>

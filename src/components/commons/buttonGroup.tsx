@@ -5,17 +5,12 @@ import { useMediaQuery, Theme, useTheme } from '@mui/material';
 import Typography from '@material-ui/core/Typography';
 
 export default function ButtonGroup(props) {
-  const theme = useTheme();
-  const matches = useMediaQuery(theme.breakpoints.down('lg'));
-  const mt = matches ? 40 : 100;
-
   const useStyles = makeStyles({
     container: {
       display: 'flex',
       flexDirection: 'row',
       justifyContent: 'center',
       alignItems: 'center',
-      marginTop: mt,
     },
     container1: {
       display: 'flex',

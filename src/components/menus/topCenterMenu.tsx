@@ -35,7 +35,9 @@ export default function TopCenterMenu(props): ReactElement {
       }}
     >
       {matches &&
-        topCenterMenu.map((item) => <MenuButton key={item.url} href={item.url} component={Link} title={item.name} />)}
+        topCenterMenu.map((item) => (
+          <MenuButton key={item.url} href={item.url} component={Link} title={item.name} target={item.target} />
+        ))}
     </div>
   );
 }
