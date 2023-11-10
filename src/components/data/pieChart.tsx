@@ -8,62 +8,68 @@ import { useMediaQuery, Theme } from '@mui/material';
 import Box from '@mui/material/Box';
 
 const PaymentChart = () => {
-  //const isSmall = useMediaQuery((theme: Theme) => theme.breakpoints.down('lg'));
+  const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+  const jobReportUrl = `${apiUrl}/public/jobreports`;
+  const plutusTxReportUrl = `${apiUrl}/public/plutusreports`;
 
-  const [data2, setData] = React.useState({
-    _id: 'jobReport',
-    numberOfPostedJobs: 10,
-    numberOfBids: 10,
-    sumBidsAmounts: 10,
-    numberOfPaidJobs: 5,
-    numberOfCompletedJobs: 5,
-    numberOfSelectedBids: 2,
-    totalPostedJobs: 10,
+  const [jobData, setJobData] = React.useState({
+    numberOfPostedJobs: 0,
+    numberOfPaidJobs: 0,
+    numberOfCompletedJobs: 0,
+    numberOfBids: 0,
+    numberOfSelectedBids: 0,
   });
 
-  /* 
-  const url = 
-  axios({
-    url: 'https://bworks.app/api/customapis/jobreports',
-    method: 'GET',
-    data: data,
-  })
-    .then((response) => {
-     console.log(response);
+  const [plutusTxData, setPlutusTxData] = React.useState({
+    sumLockedAmounts: 0,
+    sumUnlockedAmounts: 0,
+    numberOfLockTxs: 0,
+    numberOfUnlockedTxs: 0,
+  });
+
+  React.useEffect(() => {
+    axios({
+      url: jobReportUrl,
+      method: 'GET',
     })
-    .catch((error) => {
-     
-      console.log(error);
-    });
-}; */
+      .then((response) => setJobData({ ...response.data }))
+      .catch((error) => console.log(error));
+
+    axios({
+      url: plutusTxReportUrl,
+      method: 'GET',
+    })
+      .then((response) => setPlutusTxData({ ...response.data }))
+      .catch((error) => console.log(error));
+  }, []);
 
   const data1 = [
-    { name: 'Complete jobs', value: data2.numberOfCompletedJobs || 0 },
+    { name: 'Complete jobs', value: jobData.numberOfCompletedJobs || 0 },
     {
       name: 'Pending jobs',
-      value: data2.numberOfPostedJobs - data2.numberOfCompletedJobs || 0,
+      value: jobData.numberOfPostedJobs - jobData.numberOfCompletedJobs || 0,
     },
   ];
   const data = [
-    { name: 'Selected applications', value: data2.numberOfSelectedBids || 0 },
+    { name: 'Selected applications', value: jobData.numberOfSelectedBids || 0 },
     {
       name: 'UnSelected applications',
-      value: data2.numberOfBids - data2.numberOfSelectedBids || 0,
+      value: jobData.numberOfBids - jobData.numberOfSelectedBids || 0,
     },
   ];
 
   const data3 = [
-    { name: 'Locked TXs', value: data2.numberOfCompletedJobs || 0 },
+    { name: 'Locked TXs', value: plutusTxData.numberOfLockTxs || 0 },
     {
       name: 'Unlocked TXs',
-      value: data2.numberOfPostedJobs - data2.numberOfCompletedJobs || 0,
+      value: plutusTxData.numberOfUnlockedTxs || 0,
     },
   ];
   const data4 = [
-    { name: 'Locked amount($) ada', value: data2.numberOfSelectedBids || 0 },
+    { name: 'Locked amount($) ada', value: plutusTxData.sumLockedAmounts || 0 },
     {
       name: 'Unlocked amount($) ada',
-      value: data2.numberOfBids - data2.numberOfSelectedBids || 0,
+      value: plutusTxData.sumUnlockedAmounts || 0,
     },
   ];
 
@@ -131,23 +137,28 @@ const PaymentChart = () => {
           <Legend />
         </PieChart>
       </ResponsiveContainer>
+
       <Box sx={{ width: 300 }}>
         <Typography variant="subtitle2" component="ol">
           Matched jobs
         </Typography>
         <ul>
           <Typography variant="caption" component="li">
-            500 posted jobs
+            {`${jobData.numberOfPostedJobs} posted jobs`}
           </Typography>
           <Typography variant="caption" component="li">
-            300 completed jobs
+            {`${jobData.numberOfCompletedJobs} completed jobs`}
           </Typography>
 
           <Typography variant="caption" component="li">
-            100 applications
+            {`${jobData.numberOfPaidJobs} paid jobs`}
+          </Typography>
+
+          <Typography variant="caption" component="li">
+            {`${jobData.numberOfBids} applications`}
           </Typography>
           <Typography variant="caption" component="li">
-            50 selected applications
+            {`${jobData.numberOfSelectedBids} selected applications`}
           </Typography>
         </ul>
       </Box>
@@ -194,17 +205,21 @@ const PaymentChart = () => {
         </Typography>
         <ul>
           <Typography variant="caption" component="li">
-            500 Locked TXs
+            {`${plutusTxData.numberOfLockTxs} Locked TXs`}
           </Typography>
           <Typography variant="caption" component="li">
-            300 Unlocked TXs
+            {`${plutusTxData.numberOfUnlockedTxs} Unlocked TXs`}
           </Typography>
 
           <Typography variant="caption" component="li">
-            100 Locked amount($) ada
+            {`${plutusTxData.numberOfLockTxs - plutusTxData.numberOfUnlockedTxs} Pending TXs`}
+          </Typography>
+
+          <Typography variant="caption" component="li">
+            {`${plutusTxData.sumLockedAmounts} Ada($) locked`}
           </Typography>
           <Typography variant="caption" component="li">
-            50 Unlocked amount($) ada
+            {`${plutusTxData.sumUnlockedAmounts} Ada($) Unlocked`}
           </Typography>
         </ul>
       </Box>

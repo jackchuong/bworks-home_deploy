@@ -4,9 +4,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Bar from './bar';
 import Footer from './footer';
 import RootContextProvider from '@/components/contexts/rootContext';
-import dynamic from 'next/dynamic';
 import LayoutTransition from './layoutTransition';
-const Particles = dynamic(() => import('./particles'));
 
 interface MainLayoutProps {
   children: ReactElement;
@@ -18,7 +16,7 @@ interface MainLayoutProps {
 const useStyles = makeStyles((theme) => ({
   root: {
     minHeight: '100vh',
-    overflow: 'auto', //giu chieu doc khong bi scroll
+    overflow: 'auto',
   },
 
   hidden: {
@@ -27,19 +25,12 @@ const useStyles = makeStyles((theme) => ({
   position: theme.position.relative,
 }));
 
-export default function MainLayout({
-  children,
-  footer = true,
-  particle = true,
-  bar = true,
-  ...rest
-}: MainLayoutProps): ReactElement {
+export default function MainLayout({ children, footer = true, bar = true, ...rest }: MainLayoutProps): ReactElement {
   const classes = useStyles();
 
   return (
     <RootContextProvider>
       <Container disableGutters={true} maxWidth={false} className={classes.root} {...rest}>
-        {particle && <Particles />}
         <Bar show={bar} />
         <LayoutTransition>{children}</LayoutTransition>
         <Footer show={footer} />

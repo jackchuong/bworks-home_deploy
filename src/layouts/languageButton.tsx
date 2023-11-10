@@ -1,8 +1,6 @@
 import React, { ReactElement } from 'react';
-import Router from 'next-translate/Router';
-import { Button, SvgIcon, IconButton } from '@material-ui/core';
+import { SvgIcon, IconButton } from '@material-ui/core';
 import useTranslation from 'next-translate/useTranslation';
-import clsx from 'clsx';
 
 export const VnIcon = () => (
   <SvgIcon viewBox="0 0 512 512">
@@ -284,21 +282,7 @@ export default function LanguageButton(props): ReactElement {
   const style = props.show ? styles.transition : styles.hiddenRoot;
   const { lang } = useTranslation();
   const Icon = FLAG[lang] ? FLAG[lang] : FLAG.en;
-  const onClick = () => {
-    const newLang = lang === 'en' ? 'vi' : 'en';
-
-    let uri = Router.router.route;
-    if (uri.length === 3) {
-      uri = '/';
-    } else if (uri.indexOf(`/${lang}`) === 0) {
-      uri = uri.substring(3);
-    }
-
-    Router.pushI18n({
-      url: uri,
-      options: { lang: newLang },
-    });
-  };
+  const onClick = () => {};
   return (
     <IconButton style={style} onClick={onClick} color="primary">
       <Icon key={lang} />

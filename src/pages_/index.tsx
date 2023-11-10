@@ -8,12 +8,15 @@ import Box from '@mui/material/Box';
 import JobChart from '../components/data/pieChart';
 import Link from '../components/commons/link';
 import { useMediaQuery, Theme, useTheme } from '@mui/material';
+import axios from 'axios';
+import React from 'react';
 
 const Components = (): NextPage => {
   const theme = useTheme();
   const matches = useMediaQuery(theme.breakpoints.down('lg'));
   const sContractTxs = process.env.NEXT_PUBLIC_CONTRACT_TXS;
   const { t } = useTranslation();
+
   return (
     <MainLayout footer={true} bar={true}>
       <Head>

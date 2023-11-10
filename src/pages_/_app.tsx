@@ -4,7 +4,6 @@ import { ThemeProvider } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import theme from '@/layouts/theme';
 import NextNprogress from 'nextjs-progressbar';
-import Particles from '@/layouts/particles';
 import '@/components/styles/jquery.pagepiling.css';
 //import 'react-calendar-heatmap/dist/styles.css';
 
@@ -28,7 +27,7 @@ export default function MyApp(props) {
       <ThemeProvider theme={theme}>
         {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
         <CssBaseline />
-        <Particles />
+
         <NextNprogress
           color="#FFF"
           startPosition={0.3}

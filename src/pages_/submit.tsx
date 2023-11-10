@@ -28,7 +28,10 @@ export default function SignInSide(): NextPage {
       setWarning('password is not matched');
       return;
     }
-    const url = process.env.NEXT_PUBLIC_SUMMIT_ACCOUNT;
+
+    const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+    const url = `${apiUrl}/auth/register`;
+
     axios({
       url: url,
       method: 'POST',

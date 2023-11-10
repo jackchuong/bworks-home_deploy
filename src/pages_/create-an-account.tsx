@@ -35,8 +35,8 @@ export default function Register() {
     watch,
   } = useForm();
 
-  console.log(errors);
-  const url = process.env.NEXT_PUBLIC_SUMMIT_ACCOUNT;
+  const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+  const url = `${apiUrl}/auth/register`;
 
   const onSubmit = (data) => {
     const { agreedTerms, ...rest } = data;
