@@ -31,7 +31,7 @@ export default function LayoutTransition({ children }: Props): ReactElement {
     };
   }, []);
   return (
-    <Fade in={show} timeout={{ enter: 2000, exit: 500 }}>
+    <Fade in={show} timeout={{ enter: 1000, exit: 500 }}>
       <div className={classes.root}>{children}</div>
     </Fade>
   );

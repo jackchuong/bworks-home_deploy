@@ -1,4 +1,3 @@
-/* eslint-disable jsx-a11y/no-autofocus */
 import React from 'react';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
@@ -26,13 +25,21 @@ export default function Promotion(): NextPage {
     const secret = process.env.NEXT_PUBLIC_JWT_HOME_PAGE_TOKEN_SECRET;
     const expiresIn = process.env.NEXT_PUBLIC_TOKEN_EXPIRE;
 
-    const token = jwt.sign(
-      {
-        key: 'homePage',
-      },
-      secret,
-      { expiresIn },
-    );
+    let token;
+
+    try {
+      token = jwt.sign(
+        {
+          key: 'homePage',
+        },
+        secret,
+        { expiresIn },
+      );
+    } catch (e) {
+      setWarning({ type: 'error', message: 'Can not generate access token' });
+      return;
+    }
+
     const apiUrl = process.env.NEXT_PUBLIC_API_URL;
     const url = `${apiUrl}/public/tokenreceivers`;
 

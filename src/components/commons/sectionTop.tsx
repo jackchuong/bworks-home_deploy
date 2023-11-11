@@ -58,7 +58,7 @@ export default function HeaderSection(props) {
       <Typography className={classes.animatedItem} style={{ color: props.color }} variant="h4">
         A smart contract based HR platform built on Cardano
       </Typography>
-      <Typography className={classes.animatedItem2} sx={{ color: '#4caf50' }} variant="subtitle2">
+      <Typography className={classes.animatedItem2} sx={{ color: 'primary' }} variant="subtitle2">
         Match jobs & payment guarantee
       </Typography>
     </div>

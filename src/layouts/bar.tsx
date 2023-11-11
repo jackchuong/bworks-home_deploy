@@ -50,7 +50,6 @@ export default function Bar({ show, ...props }: ObjKeyValue): ReactElement {
         }}
         {...props}
         elevation={0}
-        disableGutters={true}
       >
         <Toolbar>
           <LogoMenu />

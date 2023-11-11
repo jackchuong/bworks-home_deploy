@@ -7,8 +7,7 @@ import ButtonGroup from '@/components/commons/buttonGroup';
 import Box from '@mui/material/Box';
 import JobChart from '../components/data/pieChart';
 import Link from '../components/commons/link';
-import { useMediaQuery, Theme, useTheme } from '@mui/material';
-import axios from 'axios';
+import { useMediaQuery, useTheme } from '@mui/material';
 import React from 'react';
 
 const Components = (): NextPage => {
@@ -42,7 +41,7 @@ const Components = (): NextPage => {
 
         {!matches && <JobChart />}
 
-        <Link color="#4caf50" href={sContractTxs} target="_blank" rel="noopener">
+        <Link color="secondary" href={sContractTxs} target="_blank" rel="noopener">
           View smart contract TXs
         </Link>
         <ButtonGroup

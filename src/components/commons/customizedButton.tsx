@@ -4,7 +4,7 @@ import Link from './link';
 
 const large = {
   borderRadius: 15,
-  width: 200,
+  width: 180,
   backgroundColor: 'black',
   variant: 'outlined',
   color: 'red',
