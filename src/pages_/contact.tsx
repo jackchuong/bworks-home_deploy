@@ -9,6 +9,12 @@ import jwt from 'jsonwebtoken';
 import axios from 'axios';
 import { validateEmail } from '../utils/common';
 import Typography from '@material-ui/core/Typography';
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+import FormControl from '@mui/material/FormControl';
+import Select, { SelectChangeEvent } from '@mui/material/Select';
+import NativeSelect from '@mui/material/NativeSelect';
+import OutlinedInput from '@mui/material/OutlinedInput';
 
 export default function SignInSide(): NextPage {
   const onClick = (e) => {
@@ -48,7 +54,7 @@ export default function SignInSide(): NextPage {
       .catch((error) => setWarning({ type: 'error', message: `Send message failed: ${error.response.data.message}` }));
   };
 
-  const [data, setData] = React.useState({ email: '', message: '' });
+  const [data, setData] = React.useState({ email: '', message: '', messageType: 'feedback' });
   const [warning, setWarning] = React.useState({ type: '', message: '' });
 
   const onChangeMail = (event) => {
@@ -57,7 +63,15 @@ export default function SignInSide(): NextPage {
   const onChangeMessage = (event) => {
     setData({ ...data, message: event.target.value });
   };
+  const onChangeContactType = (event) => {
+    console.log(event);
+    setData({ ...data, messageType: event.target.value });
+  };
 
+  const messageTypes = [
+    { key: 'partnership', name: 'Partnership' },
+    { key: 'feedback', name: 'Feedback' },
+  ];
   return (
     <MainLayout footer={true} bar={true}>
       <Box
@@ -84,6 +98,32 @@ export default function SignInSide(): NextPage {
           >
             clear
           </button>
+          <Box
+            sx={{
+              width: 500,
+              display: 'flex',
+              flexDirection: 'column',
+              justifyContent: 'flex-start',
+            }}
+          >
+            <FormControl variant="filled">
+              <NativeSelect
+                defaultValue={'feedback'}
+                onChange={onChangeContactType}
+                input={<OutlinedInput />}
+                inputProps={{
+                  name: 'messageType',
+                  id: 'uncontrolled-native',
+                }}
+                sx={{
+                  width: 240,
+                }}
+              >
+                <option value={'partnership'}>Partnership</option>
+                <option value={'feedback'}>Feedback</option>
+              </NativeSelect>
+            </FormControl>
+          </Box>
           <TextField
             variant="outlined"
             margin="normal"
