@@ -21,6 +21,7 @@ jobs:
       - name: Generate .env file for homepage
         uses: SpicyPizza/create-envfile@v2.0
         with:
+          envkey_NEXT_PUBLIC_API_URL: ${{ vars.NEXT_PUBLIC_API_URL }}
           envkey_NEXT_PUBLIC_CONTRACT_TXS: ${{ vars.NEXT_PUBLIC_CONTRACT_TXS }}
           envkey_NEXT_PUBLIC_TOKEN_EXPIRE: ${{ vars.NEXT_PUBLIC_TOKEN_EXPIRE }}
           envkey_NEXT_PUBLIC_JWT_HOME_PAGE_TOKEN_SECRET: ${{ secrets.NEXT_PUBLIC_JWT_HOME_PAGE_TOKEN_SECRET }}
