@@ -1,4 +1,4 @@
-FROM 16.15.1-slim as build
+FROM node:16.15.1-slim as build
 ENV NODE_OPTIONS=--max_old_space_size=8192
 WORKDIR /app
 COPY ./ ./
