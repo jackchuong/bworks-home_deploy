@@ -28,10 +28,10 @@ jobs:
           directory: .
           file_name: .env
           fail_on_empty: false
-      - name: echo .env file
-        run: |
-          echo "cat .env"
-          cat .env
+      #- name: echo .env file
+      #  run: |
+      #    echo "cat .env"
+      #    cat .env
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v2
       - name: Set up Docker Buildx
